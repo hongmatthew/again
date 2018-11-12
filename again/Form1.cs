@@ -28,6 +28,7 @@ namespace again
                 Button btn = new Button();
 
                 btn.DialogResult = DialogResult.OK;//설정
+                btn.Name = string.Format("btn_{0}", (i + 1));
                 btn.Text = string.Format("확인: {0}",(i+1));
                 btn.Size = new Size(100, 50);//(x,y)
                 btn.Location = new Point((100 * i) + 30, 30);//시작점 위치이동
@@ -38,8 +39,17 @@ namespace again
             }
         }
 
-        private  void btn_click(object o, EventArgs a)//버튼에 대한 정보를 받아온다 boject
+        private  void btn_click(object o, EventArgs a)//버튼에 (자기자신)대한 정보를 받아온다 boject
         {
+            //string names = "";
+            foreach(Control ct in Controls)  // foreach 배열갯수만큼 반복한다 (
+            {
+                //  names += ct.Name + " ";
+                if(ct.Name != "btn3") ct.BackColor = Color.Silver;
+            }
+            //MessageBox.Show(namws);
+
+
             btn = (Button) o;
             btn.BackColor = (btn.BackColor == Color.Green) ? btn.BackColor = Color.Silver : btn.BackColor = Color.Green;
 
